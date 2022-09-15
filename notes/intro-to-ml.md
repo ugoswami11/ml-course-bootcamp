@@ -44,7 +44,7 @@ In rule based system, we will define a set of rules like:
     return good
 ```
 The below flow chart depicts the approach of the traditional rule based system.
-<img src="../notes/images/intro_2.png" alt="Flow chart of Rule based system"></img>
+<img src="../notes/images/intro_2.png" alt="Flow chart of Rule based system" height= 200px width= 800px></img>
 
 We have set some rules to classify email as spam but what if the keywords change instead of 'promotions' they use words like 'Hurray' we again have to rewrite our rules and these words will keep on changing which makes the model unsustainable.
 
@@ -54,7 +54,7 @@ Developing the spam detection system using ML:
 - we will use these data and features to train our model and then we will generate our prediction based on that.
 
 The below flow chart depicts the Machine learning based approach which will overcome the issues with the traditional approach. Here the Train ML algorithm with Data and Evaluating part can be automated so that the data may keep on updating but the ML algorithm will figure out the new spam words and it will keep on learning.
-<img src="../notes/images/intro_3.png" alt="ML approach flow chart"></img>
+<img src="../notes/images/intro_3.png" alt="ML approach flow chart" height= 200px width= 800px></img>
 
 ML doesn't completely discard all rule based systems but it builds on top of it like for what value in features the email is categorized as spam we need to have some set of rules:
  - length of title > 10? true/false
