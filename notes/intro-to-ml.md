@@ -44,7 +44,7 @@ In rule based system, we will define a set of rules like:
     return good
 ```
 The below flow chart depicts the approach of the traditional rule based system.
-<img src="../notes/images/intro_2.png" alt="Flow chart of Rule based system" height= 200px width= 800px></img>
+<img src="../notes/images/intro_2.png" alt="Rule based system flow chart" height= 200px width= 800px></img>
 
 We have set some rules to classify email as spam but what if the keywords change instead of 'promotions' they use words like 'Hurray' we again have to rewrite our rules and these words will keep on changing which makes the model unsustainable.
 
