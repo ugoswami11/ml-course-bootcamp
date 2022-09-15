@@ -2,9 +2,9 @@
 
 *Machine Learning* is the use and development of computer systems that are able to learn and adapt without following explicit instructions, by using algorithms and statistical models to analyse and draw inferences from patterns in data.
 
-Let's learn with the help of an exmaple.
+Let's learn with the help of an example.
 
-Imagine we have a car classified website where you go if you want to sell or buy a car. Now if someone wants to sell the car they put the features of the car, pictures and list their price. Now the seller want's to find a price which is relevant to the car and not go too high or too low with the prices. Now as a owner of the webiste we will use machine learning to provide the correct price for the car to be sold based on the features.
+Imagine we have a car classified website where you go if you want to sell or buy a car. Now if someone wants to sell the car they put the features of the car, pictures and list their price. Now the seller want's to find a price which is relevant to the car and not go too high or too low with the prices. Now as an owner of the webiste we will use machine learning to provide the correct price for the car to be sold based on the features.
 We will ask seller to provide features like listed below
 
 | Year | Manufacturer | Mileage | ... | Price |
@@ -43,13 +43,18 @@ In rule based system, we will define a set of rules like:
         return spam
     return good
 ```
+The below flow chart depicts the approach of the traditional rule based system.
+<img src="../notes/images/intro_2.png" alt="Flow chart of Rule based system">
 
-We have set some rules to classify email as spam but what if the keywords change instead of 'promotions' they use words like 'Hurray' we again have to modify our model and these words will keep on changing which makes the model unsustainable.
+We have set some rules to classify email as spam but what if the keywords change instead of 'promotions' they use words like 'Hurray' we again have to rewrite our rules and these words will keep on changing which makes the model unsustainable.
 
 Developing the spam detection system using ML:
-- we have to collect data of both spam emails and not spam emails.
-- we have to extract features from the dataset that will classify the email as spam or not.
+- we will collect data of both spam emails and not spam emails.
+- we will extract features from the dataset that will classify the email as spam or not.
 - we will use these data and features to train our model and then we will generate our prediction based on that.
+
+The below flow chart depicts the Machine learning based approach which will overcome the issues with the traditional approach. Here the Train ML algorithm with Data and Evaluating part can be automated so that the data may keep on updating but the ML algorithm will figure out the new spam words and it will keep on learning.
+<img src="../notes/images/intro_3.png" alt="ML approach flow chart">
 
 ML doesn't completely discard all rule based systems but it builds on top of it like for what value in features the email is categorized as spam we need to have some set of rules:
  - length of title > 10? true/false
@@ -61,10 +66,23 @@ ML doesn't completely discard all rule based systems but it builds on top of it 
 we have defined set of rule to bulid our model and based on that we will generate our predicitons on the probability of email to be a spam.
 
 In rule based system we feed data and code to the system to generate some outcome.
-- Data + Code -------> Outcome
+```
+Data + Code     ---->  Outcome
+```
 
 While in ML system we feed  data and outcome to the system to generate a model based on which we generate predictions.
-- Outcome + Data -------> Model 
+```
+Outcome + Data  ---->  Model 
+```
+## Types of Machine Learning
+
+There are different types of machine learning systems, Based on the methods and way of learning, machine learning is divided into mainly four types, which are:
+- Supervised Machine Learning
+- Unsupervised Machine Learning
+- Semi-Supervised Machine Learning
+- Reinforcement Learning
+
+Only Supervised Learning is covered in this article
 
 ## Supervised Machine Learning
 
@@ -83,18 +101,21 @@ Considering the spam detection system, we predicted the email is spam or not bas
 |obs4| 1| 1 | 1 | 1 |   | 1 |
 
 We can define our model as a function **g** that takes our feature matrix **X** and outputs a value which is approximate to our target **y**
- - **g(X) ~ y**
-
+ ```
+ g(X) ~ y
+```
 ### Types of Supervised ML
 There are mainly two types of problems in Supervised ML:
  - Regression (Car price prediction)
  - Classification (Spam email detection)
+
 However there is one more type known as *ranking* which categorises the values based on rank like most popular product for the user in ecommerce website.
 
- - **Regression problems** target is a continous value, like getting some numbers as output such as car price, house price etc
- - **Classification problems** target are categories, like getting true/false values such as email is spam or not. Classiication problems can also have multiple categoreis thence they are of two types:
-    - **Binary classification** when the target consists of only two categories like email is spam or not.
-    - **Multiclass classification** when target consists of multiple categories like classifying animals using images if it's a dog, cat or horse.
+ **Regression problems** which is to predict a target numeric value, such as the price of a car, given a set of features (mileage, age, brand, etc.) called predictors.
+ 
+ **Classification problems** which is to predict target  which are categories, like getting true/false values such as email is spam or not. Classiication problems can also have multiple categories hence they are of two types:
+- **Binary classification** when the target consists of only two categories like email is spam or not.
+- **Multiclass classification** when target consists of multiple categories like classifying animals using images if it's a dog, cat or horse.
 
 ## CRISP-DM
 It stands for *Cross Industry Standard Process for Data Mining*. It's a methodology which includes decsriptions of the typical phases of a project, the tasks involved with each phase, and an explaination of the relationships between these tasks.
@@ -103,19 +124,20 @@ It stands for *Cross Industry Standard Process for Data Mining*. It's a methodol
 
 1. Business understanding
     - Identify the business problem, understand how we can solve here.
-    - Ask ourseleves, do we even need ML for this case. If not what approach to take.
-    - Analyze to what extent it's a problem
+    - Ask ourseleves, do we even require ML for this case. If not what approach to take.
     - define the goal and the goal has to be measurable
+        - In case of car price prediction - we will aim to predict the car price to 80% accuracy.
+        - In case of spam email detection - we will aim to reduce the number of spam by 50%.
 2. Data understanding
     - Analyze available data sources and decide if we need to get more data.
-    - Is the data reliable
-    - Is dataset is large enough
-    - Are we tracking the data correctly
+    - Is the data reliable?
+    - Is dataset is large enough?
+    - Are we tracking the data correctly?
 3. Data preparation
     - Transform the data so it can be put into a ML algorithm.
-    - Clean the data
+    - Clean the data.
     - Build the pipelines - sequqence of steps that takes raw data and outputs clean data.
-    - Convert data into a tabular form
+    - Convert data into a tabular form.
 4. Modelling
     - Training the models - the actual machine learning happens here.
     - try different models and select the best one
@@ -130,7 +152,7 @@ It stands for *Cross Industry Standard Process for Data Mining*. It's a methodol
     - Have we reached the goal
     - Do our metrics improve
     - Go back and adjust the goal
-    - Did we solve/meansure the right thing
+    - Did we solved/measured the right thing
     - Roll the model to more users
     - Stop working on the project
 6. Deployment
@@ -148,11 +170,11 @@ To choose our best model among many others, we need ways to evaluate how good a 
 
 We do this by splitting the dataset into a training dataset and validation dataset. This split is usually done as 80% for training and 20% for validation. The validation dataset is kept "hidden" from the model and only training dataset is used for training the model.
 
-We can extract feature matrix X and target y from the training dataset and train a model g. We can extract another feature matrix Xv and target yv from the validation dataset, and then obtain predictions
-
+We can extract feature matrix ```X``` and target ```y``` from the training dataset and train a model ```g```. We can extract another feature matrix Xv and target ```yv``` from the validation dataset, and then obtain predictions
+```
 g(Xv) = ŷv
-
-Finally, we compare our prediction ŷv with our target yv and check how different they are, thus obtaining an accuracy score.
+```
+Finally, we compare our prediction ```ŷv``` with our target ```yv``` and check how different they are, thus obtaining an accuracy score.
 
 By comparing accuracy scores between our models, we can decide which model is better for our problem.
 
@@ -171,16 +193,16 @@ So, to resolve this problem, we split the entire dataset into 3 parts:
 We will develop our model based on the following steps:
 - we will train the models with the training dataset.
 - We will validate our model with the validation dataset and choose the model which performed the best.
-- We will test the model with test dataset and verif if the accuracy is similar to as of the validation dataset then only we will consider the model will perform well in real world. If the result is different then we can say that we got a lucky model and we must look for other models.
+- We will test the model with test dataset and verify if the accuracy is similar to as of the validation dataset then only we will consider the model will perform well in real world. If the result is different then we can say that we got a lucky model and we must look for other models.
 
 ### Summarizing the model selection process
  - Split the original dataset into train-validation-test datasets.
  - Train the model
- - Validate the model. If accuracy is not good repeat the previous step with different model.
+ - Validate the model. If accuracy is not good, repeat the previous step with different model.
  - Select the best model.
  - Check the accuracy is good enough.
 
- After we select our best model by doing all the above steps then we will retrain the model again on train+validation dataset as we don't want the validation dataset to be wasted here. Then we will again validate the model using the test dataset. This will improve the model to some extent.
+ After we select our best model by doing all the above steps then we will retrain the model again on ``` train + validation ``` dataset as we don't want the validation dataset to be wasted here. Then we will again validate the model using the ```test``` dataset. This will improve the model to some extent.
 
 ## Introduction to NumPy
  
