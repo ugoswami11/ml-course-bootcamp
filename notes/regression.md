@@ -228,7 +228,7 @@ RMSE calculates the square root of squared differnece between the predicted and 
 
 The equation of RMSE is like this:
 ```
-RMSE = √( 1/m * ∑( (g(Xᵢ) - yᵢ)² , i=[1,m] ))
+RMSE = √( 1/m * ∑((g(Xᵢ) - yᵢ)², i=[1,m] ))
 ```
 where ```g(Xᵢ)``` is the prediction for Xᵢ and ```yᵢ ``` is the actual value.
 
@@ -240,3 +240,22 @@ def rmse(y_actual, y_pred):
     
     return numpy.sqrt(mse)
 ```
+
+### Regularization
+Regularization is a technique used to reduce the errors by fitting the function appropriately on the given training set.
+
+So we have our normal equation which is ```W = (Xᵀ·X)⁻¹·Xᵀ·y``` but sometimes while calculating the ```(Xᵀ·X)⁻¹``` we may observe that the inverse does not exist for the gram matrix, this usually happens when some column in the matrix have duplicate values. In algebric terms we can say that one column is a linear combination of other columns so when we try to calculate the ```Xᵀ·X``` value the matrix becomes singular and hence we will not be able to calculate the inverse of that matrix.
+
+We can solve this problem using *Regularization*. We will use a regularization parameter that will modify our normal equation in a way that will result in greatly reduced weights.
+
+In case *Linear Regression* regularization is applied on the diagonal element of the matrix. The regularization paramter is usually a small value such as ```0.001```. The larger the number we add to the diagonal the more we have the weights under control and also we will have smaller weight value. If the regularization value is too high or too low then the model will be less accurate so we have to find a balanced value of regularization that will generate better predictions.
+
+To implement this regularization parameter in our linear regression model we can make use of the ```np.eye()``` method to create an identity matrix and multiply it with some value of ```r``` then we can add the r matrix to ```XTX``` matrix.
+```
+XTX = XTX + 0.01 * np.eye(3)
+```
+Now to find the ideal regularization value we can create a loop with different values of r like 0.0, 0.0001, 0.001, 0.01, 0.1, 10 and we can calculate the RMSE score for each value of r and select the value which has the least RMSE score.
+
+
+
+
