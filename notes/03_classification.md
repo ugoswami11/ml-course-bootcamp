@@ -12,3 +12,13 @@ the output of our model is a score between 0 and 1 based on the likelihood of cu
 
 How to predict is that we can look at the historical details of customers who left and which factors leads to churn.
 
+Feature Importance
+1. Difference
+ Global CR - Group CR >0 - less likely to churn
+ Global CR - Group CR <0 - more likely to churn
+2. RIsk ratio
+ risk   = group CR/ global CR > 1 - more likely to churn
+ risk   = group CR/ global CR < 1 - less likely to churn
+
+Mutual Information
+way to measure the importance of categorical variables
