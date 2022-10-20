@@ -22,3 +22,40 @@ Feature Importance
 
 Mutual Information
 way to measure the importance of categorical variables
+
+correlation
+way to measure the importance of numerical variables
+when corr value is negative that means one value will go hihger other will be go lower
+
+when corr positive than when one increase the other also increas
+
+y = {0,1}
+
+x tenure - 0.72
+y churn 
+the when tenure is high the churn rate will be high
+
+One hot encoding
+
+
+Logistic Regression:
+g(Xi) = yi
+where g is the model 
+y is the target
+
+classification - binary and multiclass
+
+y = {0,1}
+0 - no churn
+1 - churn
+
+g(Xi) = 0 or 1
+probability of Xi belonging to the positive class
+
+linearreg - g(Xi) = Wo + W_T*Xi
+logistic reg - same as linear reg but the range is between 0 and 1
+Sigmoid function
+
+
+The W0+W_T*Xi is the score and with sigmoid we can convert it into probability
+
