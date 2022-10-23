@@ -1,29 +1,43 @@
-Problem statement: Churn Prediction
-Imagine we are working for a telecom company and we have to identify clients that wnats to leave our company or churn and assign everyone score from 0 to 1 for the chances of leaving the company.
-And by predicting this value we would be able to retain our client by providing discounted prices to those client to avoid them from leaving our company service.
+## Logistic Regression
 
-Binary Classification
+### Problem statement: Churn Prediction
+Imagine we are working for a telecom company and we have to identify clients that wants to leave our company or churn and assign everyone score from 0 to 1 for the chances of leaving the company and by predicting this value we would be able to retain our client by providing discounted prices to those client to avoid them from leaving our company service.
 
+### Binary Classification
+The above problem statement is an example of binary classification as the traget variable consists of only 2 values i.e 0 and 1.
+
+So here also we are trying to predict the y value which is the target column by feeding the X values which are the features into the model g. we can rewrite this as below:
+```
 g(Xi) ~ yi
+```
+where the y column consists of only two values ```yi = {0,1}```
 
-yi = {0,1}
+Now we will use logistic regression to generate prediction but first we will have look at some important terms that will help us in feature engineering and doing exploratory data analysis.
 
-the output of our model is a score between 0 and 1 based on the likelihood of customers to churn.
+### Feature Importance
+From our telco dataset we will take few columns that can be used as feature and we study further if they have any impact on the target column.
 
-How to predict is that we can look at the historical details of customers who left and which factors leads to churn.
+First we will calculate the average churn of churn column to have a look at the average churn of customers and we will call this data as global.
 
-Feature Importance
-1. Difference
- Global CR - Group CR >0 - less likely to churn
- Global CR - Group CR <0 - more likely to churn
-2. RIsk ratio
- risk   = group CR/ global CR > 1 - more likely to churn
- risk   = group CR/ global CR < 1 - less likely to churn
+Then we can take a particular group from the dataset like gender column or contract column and we will take the average churn for that particular group and let's call this data as group
 
-Mutual Information
-way to measure the importance of categorical variables
+Now we can do two operation to find out which group of people are more likely to churn.
 
-correlation
+-  Difference:
+    - If ( Global - Group ) > 0 then that group is less likely to churn
+    - If ( Global - Group ) <0 then that group is more likely to churn
+- Risk ratio
+    - If ( Group / Global ) > 1 then that group is more likely to churn
+    - If ( Group / Global ) < 1 then that group is less likely to churn
+
+So from above two measures i.e. the difference and risk ration we can get an idea which group of customers are more likely to churn and we can target those customers by providing some offers and discounts.
+
+### Mutual Information
+One more way to measure which features provide a more imapct on the target column is by using *Mutual Information* 
+
+Mutual Information is a way to measure the importance of categorical variables
+
+### Correlation
 way to measure the importance of numerical variables
 when corr value is negative that means one value will go hihger other will be go lower
 
