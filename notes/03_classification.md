@@ -35,41 +35,72 @@ So from above two measures i.e. the difference and risk ration we can get an ide
 ### Mutual Information
 One more way to measure which features provide a more imapct on the target column is by using *Mutual Information* 
 
-Mutual Information is a way to measure the importance of categorical variables
+*Mutual information* of 2 random variables is a measure of the mutual dependence between them.
+
+The mutual info score is between 0 and 1. The more closer to 1 the more important the feature is for the target variable.
 
 ### Correlation
-way to measure the importance of numerical variables
-when corr value is negative that means one value will go hihger other will be go lower
+The correlation coefficient measures the linear correlation between two sets of data. It's the ratio between the covariance of 2 variables and the product of their standard deviations.
 
-when corr positive than when one increase the other also increas
+The value of correlation is always in the interval [-1, 1]. when the correlation value is negative that means one value will go higher and other will be go lower when the value is positive that means if one values go higher then the other will also go higher
 
-y = {0,1}
+We can calculate correlation using the corr and corrwith methods.
 
-x tenure - 0.72
-y churn 
-the when tenure is high the churn rate will be high
+### One-hot encoding
+One hot encoding is method applied for the categorical columns where a new column is created for each category and the values are coded as 0 and 1.
 
-One hot encoding
+Example: Let's take the gender column in the dataset which has two categoies ```male``` and ```female```. When we will apply one hot encoding the gender column will be converted into two more columns - male and female and the values will be represented as below
+
+| category=male| category=female|
+---------------|---------------
+| 1 | 0 |
+| 0 | 1 |
+| 0 | 1 |
+| 1 | 0 |
+| 1 | 0 |
+
+### Implementing Logistic Regression:
+The equation of logistic regression is same as the equation of linear regression as both are linear functions. The only differene is of the sigmoid function we use in logistic regression. 
+
+So we know that ```g(Xi) = yi``` where g is the model and y is the target
+
+But in this case the target consists of only two values that is 0 and 1. where,
+- 0 - no churn
+- 1 - churn
+
+So that means we need to predict ```g(Xi) = 0``` or ```g(Xi) = 1``` 
+
+Let's look at how our implementation of linear regression is similar and different from logistic regression.
+
+The below code is our implementation of linear egression where  ```w0``` is the bias term, ```xi``` is the feature matrix and ```w``` is the corresponding weights of the features. Then we add the bias term with the dot product of weight and feature matrix which gives us our prediction.
+```
+def linear_regression(xi):
+    result = w0
+    
+    for j in range(len(w)):
+        result = result + xi[j] * w[j]
+        
+    return result
+```    
+In case of logistic regression we just use our sigmoid function in the result we got from our linear regression method and that will be our prediction. 
+```
+def logistic_regression(xi):
+    score = w0
+    
+    for j in range(len(w)):
+        score = score + xi[j] * w[j]
+        
+    result = sigmoid(score)
+    return result
+```
+### Sigmoid function
+The sigmoid function is used to convert the result into probabilities. It maps any real values into another value between 0 and 1. 
+
+We can calculate the sigmoid value as below
+```
+def sigmoid(z):
+    return 1 / (1 + np.exp(-z))
+```
 
 
-Logistic Regression:
-g(Xi) = yi
-where g is the model 
-y is the target
-
-classification - binary and multiclass
-
-y = {0,1}
-0 - no churn
-1 - churn
-
-g(Xi) = 0 or 1
-probability of Xi belonging to the positive class
-
-linearreg - g(Xi) = Wo + W_T*Xi
-logistic reg - same as linear reg but the range is between 0 and 1
-Sigmoid function
-
-
-The W0+W_T*Xi is the score and with sigmoid we can convert it into probability
 
