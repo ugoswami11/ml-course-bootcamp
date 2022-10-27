@@ -14,4 +14,9 @@ So we got around 80% accuracy on our predictions when we chose the threshold as 
 
 We now need to find our that the threshold we used is good or not. So for that we will take different threshold like 0, 0.3, 0.4, 0.5, 0.6, 0.7, 1 and we will generate our prediction based on that and calculate the accuracy score, whichever threshold will have the highest accuracy score we will use that threshold value in our final model.
 
-We found out that the accuracy score is highest i.e. 80% when threshold is 0.5. we also look at the accuracy score when threshold is 1 and we got accuracy score around 73%.
+We found out that the accuracy score is highest i.e. 80% when threshold is 0.5. we also look for the accuracy score when we use a dummy model i.e. threshold as 1 which means when no client will churn then we got accuracy score around 73%.
+
+So when we compare our dummy model score with our original model prediction we don't see a huge difference which means the accuracy model is not the perfect measure of evaluation for this case.
+
+## Confusion table
+Confusion table is a way of measuring different types of errors and correct decisions that binary classifiers can make. Using this information, it is possible to evaluate the quality of the model by different strategies.
