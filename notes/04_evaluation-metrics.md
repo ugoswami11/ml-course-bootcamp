@@ -20,3 +20,19 @@ So when we compare our dummy model score with our original model prediction we d
 
 ## Confusion table
 Confusion table is a way of measuring different types of errors and correct decisions that binary classifiers can make. Using this information, it is possible to evaluate the quality of the model by different strategies.
+
+For binary classification, based on the prediction and the ground truth, there are 4 posible outcome scenarios:
+- Ground truth positive, prediction positive > Correct > True positive
+- Ground truth positive, prediction negative > Incorrect > False positive
+- Ground truth negative, prediction posiive > Incorrect > False negative
+- Ground truth negative, prediction negative > Correct > True negative
+
+The confusion table is a matrix whose columns (x dimension) are the predictions and the rows (y dimension) is the ground truth:
+```
+TP FP
+FN TP
+```
+Each position contains the element count for each scenario. We can also convert the count values to percentages.
+
+## Precision and Recall
+
