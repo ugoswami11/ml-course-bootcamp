@@ -21,11 +21,12 @@ So when we compare our dummy model score with our original model prediction we d
 ## Confusion table
 Confusion table is a way of measuring different types of errors and correct decisions that binary classifiers can make. Using this information, it is possible to evaluate the quality of the model by different strategies.
 
-For binary classification, based on the prediction and the ground truth, there are 4 posible outcome scenarios:
-- Ground truth positive, prediction positive > Correct > True positive
-- Ground truth positive, prediction negative > Incorrect > False positive
-- Ground truth negative, prediction posiive > Incorrect > False negative
-- Ground truth negative, prediction negative > Correct > True negative
+For binary classification, based on the prediction and the ground truth, there will be 4 posible outcome for our churn prediction scenario:
+
+- When prediction is positive and outcome is correct- True positive
+- When prediction is positive and outcome is incorrect- False positive
+- When prediction is negative and outcome is incorrect- False negative
+- When prediction is negative and the outcome is correct- True negative
 
 The confusion table is a matrix whose columns (x dimension) are the predictions and the rows (y dimension) is the ground truth:
 ```
@@ -36,3 +37,8 @@ Each position contains the element count for each scenario. We can also convert 
 
 ## Precision and Recall
 
+Precision tell us the fraction of positive predictions that are correct. It takes into account only the positive class (TP and FP - second column of the confusion matrix), as is stated in the following formula:
+
+Recall measures the fraction of correctly identified postive instances. It considers parts of the postive and negative classes (TP and FN - second row of confusion table). The formula of this metric is presented below:
+
+In this problem, the precision and recall values were 67% and 54% respectively. So, these measures reflect some errors of our model that accuracy did not notice due to the class imbalance.
