@@ -33,12 +33,14 @@ The confusion table is a matrix whose columns (x dimension) are the predictions 
 TP FP
 FN TP
 ```
-Each position contains the element count for each scenario. We can also convert the count values to percentages.
+Each position contains the element count for each scenario. We can also convert the count values to percentages and add up percentages for True negative and True positive to give us an idea for the accuracy of the model.
 
 ## Precision and Recall
 
-Precision tell us the fraction of positive predictions that are correct. It takes into account only the positive class (TP and FP - second column of the confusion matrix), as is stated in the following formula:
-
+Precision tell us the fraction of positive predictions that are correct. In case of our churn prediction project it will only find out the fraction of customers that churned from the company predicted by the model.
+```
+precision = TP / (TP + FP)
+```
 Recall measures the fraction of correctly identified postive instances. It considers parts of the postive and negative classes (TP and FN - second row of confusion table). The formula of this metric is presented below:
 
 In this problem, the precision and recall values were 67% and 54% respectively. So, these measures reflect some errors of our model that accuracy did not notice due to the class imbalance.
