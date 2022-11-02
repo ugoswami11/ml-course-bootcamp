@@ -38,6 +38,7 @@ Each position contains the element count for each scenario. We can also convert 
 ## Precision and Recall
 
 Precision tell us the fraction of positive predictions that are correct. In case of our churn prediction project it will only find out the fraction of customers that churned from the company predicted by the model.
+The formula for precision is 
 ```
 precision = TP / (TP + FP)
 ```
