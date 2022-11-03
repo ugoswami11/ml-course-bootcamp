@@ -36,6 +36,10 @@ FN TP
 Each position contains the element count for each scenario. We can also convert the count values to percentages and add up percentages for True negative and True positive to give us an idea for the accuracy of the model.
 
 ## Precision and Recall
+Earlier we used accuracy metric to measure the model performance in which we calculated as below
+```
+accuracy= (TP + TN) / (TP + FP + FN + TN)
+```
 
 Precision tell us the fraction of positive predictions that are correct. In case of our churn prediction project it will only find out the fraction of customers that churned from the company predicted by the model.
 The formula for precision is 
