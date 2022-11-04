@@ -36,19 +36,20 @@ FN TP
 Each position contains the element count for each scenario. We can also convert the count values to percentages and add up percentages for True negative and True positive to give us an idea for the accuracy of the model.
 
 ## Precision and Recall
-Earlier we used accuracy metric to measure the model performance in which we calculated as below
+Earlier we used accuracy as our metric which is the sum of true positive and true negative divided by the total number of predictions. In our churn prediction model it will the sum of prediction for cutomers that didnot churn and the customers that did churn divided by the total number of predictions. We can write this as below
 ```
 accuracy= (TP + TN) / (TP + FP + FN + TN)
 ```
-
 Precision tell us the fraction of positive predictions that are correct. In case of our churn prediction project it will only find out the fraction of customers that churned from the company predicted by the model.
 The formula for precision is 
 ```
 precision = TP / (TP + FP)
 ```
-Recall measures the fraction of correctly identified postive instances. It considers parts of the postive and negative classes (TP and FN - second row of confusion table). The formula of this metric is presented below:
-
-In this problem, the precision and recall values were 67% and 54% respectively. So, these measures reflect some errors of our model that accuracy did not notice due to the class imbalance.
+Recall measures the fraction of correctly identified postive instances. Instead of looking at all of the positive predictions, we look at the ground truth positives and we calculate the fraction of correctly identified positives in that subset It considers parts of the postive and negative classes (TP and FN). The formula of this metric is presented below:
+```
+recall = TP / (TP + FN)
+```
+In case of our churn predictions problem, the precision and recall values were 67% and 54% respectively. So, these measures reflect some errors of our model that accuracy did not notice due to the class imbalance.
 
 ## ROC
 
