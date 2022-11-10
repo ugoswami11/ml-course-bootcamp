@@ -14,7 +14,7 @@ So we got around 80% accuracy on our predictions when we chose the threshold as 
 
 We now need to find our that the threshold we used is good or not. So for that we will take different threshold like 0, 0.3, 0.4, 0.5, 0.6, 0.7, 1 and we will generate our prediction based on that and calculate the accuracy score, whichever threshold will have the highest accuracy score we will use that threshold value in our final model.
 
-We found out that the accuracy score is highest i.e. 80% when threshold is 0.5. we also look for the accuracy score when we use a dummy model i.e. threshold as 1 which means when no client will churn then we got accuracy score around 73%.
+We found out that the accuracy score is highest i.e. 80% when threshold is 0.5. we also look for the accuracy score when we use a dummy model i.e. threshold as 1 which means when no customer will churn then we got accuracy score around 73%.
 
 So when we compare our dummy model score with our original model prediction we don't see a huge difference which means the accuracy model is not the perfect measure of evaluation for this case.
 
@@ -65,21 +65,24 @@ In the other hand, TPR or Recall is the fraction of true positives (TP) divided 
 TPR = TP / (TP + FN)
 ```
 
-ROC curves consider Recall and FPR under all the possible thresholds. If the threshold is 0 or 1, the TPR and Recall scores are the opposite of the threshold (1 and 0 respectively), but they have different meanings, as we explained before.
+If we try different thresholds and calculate confusion tables for each threshold, we can also calculate the TPR and FPR for each threshold.
 
-We need to compare the ROC curves against a point of reference to evaluate its performance, so the corresponding curves of random and ideal models are required. It is possible to plot the ROC curves with FPR and Recall scores vs thresholds, or FPR vs Recall.
+When we plot the FPR (x axis) against the TPR (y axis), a random baseline model should describe an ascending straight diagonal line, a perfect model would increase inmediately to 1 and stay up, and our model most likely will be somewhere in between in a bow shape, ascending quickly at first and then decreasing the growth until it reaches the point (1,1).
 
-Classes and methods:
+A good model would be a very "arched" bow, as close as possible to the perfect model and as far away as possible form the diagonal.
 
-    np.repeat([x,y], [z,w]) - returns a numpy array with a z number of x values, and a w number of y values.
-    roc_curve(x, y) - sklearn.metrics class for calculating the false positive rates, true positive rates, and thresholds, given a target x dataset and a predicted y dataset.
-
-## AUC
-The Area under the ROC curves can tell us how good is our model with a single value. The AUROC of a random model is 0.5, while for an ideal one is 1.
+## ROC AUC
+The ROC AUC is the Area under the ROC curves which can tell us how good is our model with a single value. For a random model with a diagonal ROC curve (worse scenario), the ROC AUC will be 0.5. For a perfect model with a perfect ROC curve that instantly rises to 1 (best scenario), the ROC AUC will be 1.0.
 
 In ther words, AUC can be interpreted as the probability that a randomly selected positive example has a greater score than a randomly selected negative example.
 
-Classes and methods:
+The AUC is actually the probability of a random positive sample having a higher score than a random negative sample.
 
-    auc(x, y) - sklearn.metrics class for calculating area under the curve of the x and y datasets. For ROC curves x would be false positive rate, and y true positive rate.
-    roc_auc_score(x, y) - sklearn.metrics class for calculating area under the ROC curves of the x false positive rate and y true positive rate datasets.
+## K-Fold Cross Validation
+
+K-fold Cross Validation consists on evaluating the same model on different subsets of data.In this algorithm, the full training dataset is divided into k partitions, we train the model in k-1 partiions of this dataset and evaluate it on the remaining subset. Then, we end up evaluating the model in all the k folds, and we calculate the average evaluation metric for all the folds. 
+
+We can then compute the AUC score for each permutation and then calculate the mean and standard deviation of all of them to get the average prediction and the spread within predictions.
+
+This method is applied in the parameter tuning step, which is the process of selecting the best parameter.
+
