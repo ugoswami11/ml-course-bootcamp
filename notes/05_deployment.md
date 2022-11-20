@@ -12,3 +12,5 @@ The below chart describes how we will converting our model which we created in j
 - Then we will create a ```Churn webserive``` through which we will access our model and allow other components to access it and make predictions.
 - The model then will be utilised by ```Marketing service```, the users input customer data into the service and the service communicates with Churn to request a prediction. Once the prediction is received, the service can execute whichever task is deemed appropiate, suchn as sending emails with offers to potentially churning customers.  
 
+### Extracting the model
+
